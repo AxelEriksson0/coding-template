@@ -41,13 +41,13 @@
     "solid-js": "^1.9.13"
   },
   "devDependencies": {
-    "lefthook": "^2.1.8",
-    "oxfmt": "^0.51.0",
-    "oxlint": "^1.66.0",
+    "lefthook": "^2.1.9",
+    "oxfmt": "^0.54.0",
+    "oxlint": "^1.69.0",
     "oxlint-tsgolint": "^0.23.0"
   },
   "engines": {
-    "node": ">=26.2.0"
+    "node": ">=26.3.0"
   },
-  "packageManager": "yarn@4.15.0"
+  "packageManager": "yarn@4.16.0"
 }
