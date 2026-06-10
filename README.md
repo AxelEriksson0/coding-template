@@ -57,3 +57,12 @@ If you want to fail on all issues you need to use the Aikido CLI - https://help.
 This repository includes project-local Codex hooks under `.codex/`. To enable them,
 start Codex from the CLI in this repository and approve the hooks with `/hooks`.
 Hooks will not run until they have been reviewed and trusted in the CLI session.
+
+### MCP
+
+This repository configures the WebdriverIO MCP server for both Codex and Zed.
+Codex reads the project-local server configuration from `.codex/config.toml` once
+this repository is trusted. Zed reads the same server from `.zed/settings.json`;
+reload or restart Zed if it does not pick up the setting immediately.
+
+The first MCP startup may download `@wdio/mcp@latest` through `npx`.

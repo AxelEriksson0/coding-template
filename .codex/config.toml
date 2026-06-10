@@ -1,0 +1,3 @@
+[mcp_servers.wdio-mcp]
+command = "npx"
+args = ["-y", "@wdio/mcp@latest"]

@@ -1,3 +1,10 @@
 {
-  "format_on_save": "on"
+  "format_on_save": "on",
+  "context_servers": {
+    "wdio-mcp": {
+      "source": "custom",
+      "command": "npx",
+      "args": ["-y", "@wdio/mcp@latest"]
+    }
+  }
 }
