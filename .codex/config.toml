@@ -1,3 +1,3 @@
 [mcp_servers.wdio-mcp]
-command = "npx"
-args = ["-y", "@wdio/mcp@latest"]
+command = "bash"
+args = ["./.codex/scripts/wdio-mcp-node24.sh"]

@@ -65,4 +65,17 @@ Codex reads the project-local server configuration from `.codex/config.toml` onc
 this repository is trusted. Zed reads the same server from `.zed/settings.json`;
 reload or restart Zed if it does not pick up the setting immediately.
 
-The first MCP startup may download `@wdio/mcp@latest` through `npx`.
+Firefox sessions currently require running WebdriverIO MCP with Node 24. The
+Codex and Zed configs use a repository-local launcher:
+
+```text
+.codex/scripts/wdio-mcp-node24.sh
+```
+
+By default the launcher uses `fnm exec --using 24.15.0` and starts
+`@wdio/mcp@latest`. If you use another Node manager, set `WDIO_MCP_NODE` and
+`WDIO_MCP_SERVER` before starting Codex or Zed. The `wdio-mcp` shim is not
+called directly because its `env node` shebang can resolve to a newer active
+Node version and fail Firefox/geckodriver session startup. On Linux, the
+launcher also restores common desktop session environment variables when they
+are missing, which is required for headed Firefox sessions.

@@ -3,8 +3,8 @@
   "context_servers": {
     "wdio-mcp": {
       "source": "custom",
-      "command": "npx",
-      "args": ["-y", "@wdio/mcp@latest"]
+      "command": "bash",
+      "args": ["./.codex/scripts/wdio-mcp-node24.sh"]
     }
   }
 }
