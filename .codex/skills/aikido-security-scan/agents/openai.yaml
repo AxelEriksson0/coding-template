@@ -1,0 +1,13 @@
+interface:
+  display_name: "Aikido Security Scan"
+  short_description: "Debug and fix Aikido scan failures"
+  default_prompt: "Use $aikido-security-scan to diagnose the failing Aikido Security Scan workflow and fix the reported issue."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "aikido"
+      description: "Aikido MCP server for issue details and local security scans"
+    - type: "mcp"
+      value: "github"
+      description: "GitHub MCP server for Actions workflow logs and reruns"

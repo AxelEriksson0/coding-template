@@ -1,3 +1,17 @@
 [mcp_servers.wdio-mcp]
 command = "bash"
 args = ["./.codex/scripts/wdio-mcp-node24.sh"]
+
+[mcp_servers.aikido]
+command = "npx"
+args = ["-y", "@aikidosec/mcp"]
+env_vars = ["AIKIDO_API_KEY"]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+enabled_tools = ["aikido_full_scan", "aikido_issues_list"]
+
+[mcp_servers.aikido.tools.aikido_issues_list]
+approval_mode = "approve"
+
+[mcp_servers.aikido.tools.aikido_full_scan]
+approval_mode = "approve"

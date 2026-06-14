@@ -52,6 +52,21 @@ The repository is configured to check pull requests and only fails when new issu
 
 If you want to fail on all issues you need to use the Aikido CLI - https://help.aikido.dev/container-image-scanning/local-image-scanning/pr-and-release-gating-using-local-image-scanner
 
+Codex can also use the Aikido MCP server configured in `.codex/config.toml`.
+Create an Aikido MCP personal access token in Aikido, then expose it through
+the shell environment that starts Codex:
+
+```bash
+# ~/.zshrc, ~/.bashrc, or another private shell startup file
+export AIKIDO_API_KEY="your-aikido-token"
+```
+
+Do not commit this token in `.env`, `.codex/config.toml`, README examples with
+real values, or any other tracked file. After updating your shell startup file,
+run `source ~/.zshrc` or restart the terminal, then restart Codex. The
+project-local MCP config forwards `AIKIDO_API_KEY` into the Aikido MCP server
+with `env_vars`.
+
 ### Codex hooks
 
 This repository includes project-local Codex hooks under `.codex/`. To enable them,
