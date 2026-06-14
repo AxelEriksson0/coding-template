@@ -67,6 +67,11 @@ run `source ~/.zshrc` or restart the terminal, then restart Codex. The
 project-local MCP config forwards `AIKIDO_API_KEY` into the Aikido MCP server
 with `env_vars`.
 
+To let Codex list Aikido issues from the MCP server, enable the required MCP
+permissions in Aikido at
+https://app.aikido.dev/settings/integrations/ide/mcp/permissions. Issue feed
+access also requires an Aikido subscription that includes this MCP feature.
+
 ### Codex hooks
 
 This repository includes project-local Codex hooks under `.codex/`. To enable them,
