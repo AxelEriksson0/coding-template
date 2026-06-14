@@ -10,7 +10,7 @@ description: SSH into a remote server using SERVER_USER and SERVER_IP from a rep
 Use `scripts/remote_disk_report.py` from the skill directory. Run it from the local repository, or pass `--repo-root <path>`.
 
 ```bash
-python3 .codex/skills/ssh-disk-usage-report/scripts/remote_disk_report.py
+python3 .agents/skills/ssh-disk-usage-report/scripts/remote_disk_report.py
 ```
 
 The script searches for `.env` in this order:

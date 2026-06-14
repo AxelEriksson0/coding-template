@@ -13,7 +13,7 @@ Start by classifying the failure source before changing code.
 2. Run the helper when a run URL, run ID, or latest run is available:
 
 ```bash
-python3 .codex/skills/aikido-security-scan/scripts/triage_aikido_action.py --repo AxelEriksson0/coding-template --latest
+python3 .agents/skills/aikido-security-scan/scripts/triage_aikido_action.py --repo AxelEriksson0/coding-template --latest
 ```
 
 Use `--run-id <id>` for a specific run. Add `--json` when machine-readable output is useful. The helper uses `GITHUB_TOKEN` or `GH_TOKEN` if set; if GitHub refuses log downloads, fetch logs through GitHub MCP and rerun with `--log-file <path>`.

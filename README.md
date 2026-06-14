@@ -78,6 +78,13 @@ This repository includes project-local Codex hooks under `.codex/`. To enable th
 start Codex from the CLI in this repository and approve the hooks with `/hooks`.
 Hooks will not run until they have been reviewed and trusted in the CLI session.
 
+### Agent configuration
+
+Reusable AI-agent skills live under `.agents/skills/` so repository workflows
+are not tied to a specific agent vendor. Keep agent-specific runtime
+configuration in that agent's own directory, such as Codex MCP servers, hooks,
+and launcher scripts under `.codex/`.
+
 ### MCP
 
 This repository configures the WebdriverIO MCP server for both Codex and Zed.
