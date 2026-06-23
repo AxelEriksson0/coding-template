@@ -1,6 +1,6 @@
 [mcp_servers.wdio-mcp]
 command = "bash"
-args = ["./.codex/scripts/wdio-mcp-node24.sh"]
+args = ["/home/rxtl/coding-template/.codex/scripts/wdio-mcp-node24.sh"]
 
 [mcp_servers.aikido]
 command = "npx"

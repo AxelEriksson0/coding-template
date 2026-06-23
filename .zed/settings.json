@@ -4,7 +4,7 @@
     "wdio-mcp": {
       "source": "custom",
       "command": "bash",
-      "args": ["./.codex/scripts/wdio-mcp-node24.sh"]
+      "args": ["/home/rxtl/coding-template/.codex/scripts/wdio-mcp-node24.sh"]
     }
   }
 }
