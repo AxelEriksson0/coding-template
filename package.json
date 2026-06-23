@@ -42,12 +42,12 @@
   },
   "devDependencies": {
     "lefthook": "^2.1.9",
-    "oxfmt": "^0.54.0",
-    "oxlint": "^1.69.0",
+    "oxfmt": "^0.55.0",
+    "oxlint": "^1.70.0",
     "oxlint-tsgolint": "^0.23.0"
   },
   "engines": {
-    "node": ">=26.3.0"
+    "node": ">=26.3.1"
   },
-  "packageManager": "yarn@4.16.0"
+  "packageManager": "yarn@4.17.0"
 }
