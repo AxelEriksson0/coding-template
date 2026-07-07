@@ -4,21 +4,23 @@
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
 import os
 import re
 import sys
-import urllib.error
 import urllib.parse
-import urllib.request
 import zipfile
 from dataclasses import asdict, dataclass
 from io import BytesIO
+from pathlib import Path
 from typing import Any
 
 
 DEFAULT_REPO = "AxelEriksson0/coding-template"
 DEFAULT_WORKFLOW = "aikido.yml"
+GITHUB_API_ORIGIN = "https://api.github.com"
+ALLOWED_REDIRECT_HOST_SUFFIXES = (".actions.githubusercontent.com", ".blob.core.windows.net")
 
 
 @dataclass
@@ -38,20 +40,75 @@ class Triage:
     notes: list[str]
 
 
-def github_json(path_or_url: str) -> Any:
+class GitHubRequestError(Exception):
+    def __init__(self, message: str, status: int | None = None) -> None:
+        super().__init__(message)
+        self.status = status
+
+
+def github_api_url(path_or_url: str) -> str:
     if path_or_url.startswith("https://"):
         url = path_or_url
     else:
-        url = f"https://api.github.com{path_or_url}"
-    request = urllib.request.Request(url, headers=github_headers("application/vnd.github+json"))
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return json.load(response)
+        url = f"{GITHUB_API_ORIGIN}{path_or_url}"
+    parsed = urllib.parse.urlparse(url)
+    if parsed.scheme != "https" or parsed.netloc != "api.github.com":
+        raise ValueError(f"Refusing non-GitHub API URL: {url}")
+    return url
+
+
+def is_allowed_download_host(host: str) -> bool:
+    return host == "api.github.com" or any(host.endswith(suffix) for suffix in ALLOWED_REDIRECT_HOST_SUFFIXES)
+
+
+def local_file_path(path: str) -> Path:
+    root = Path.cwd().resolve()
+    resolved = Path(path).expanduser().resolve()
+    if not resolved.is_file() or not resolved.is_relative_to(root):
+        raise ValueError(f"Refusing log file outside repository: {path}")
+    return resolved
+
+
+def https_get(url: str, headers: dict[str, str], redirect_count: int = 0) -> bytes:
+    if redirect_count > 3:
+        raise GitHubRequestError("Too many redirects while fetching GitHub data")
+
+    parsed = urllib.parse.urlparse(url)
+    if parsed.scheme != "https" or not parsed.netloc or not is_allowed_download_host(parsed.netloc):
+        raise ValueError(f"Refusing non-allowlisted URL: {url}")
+
+    path = parsed.path or "/"
+    if parsed.query:
+        path = f"{path}?{parsed.query}"
+
+    connection = http.client.HTTPSConnection(parsed.netloc, timeout=30)
+    try:
+        connection.request("GET", path, headers=headers)
+        response = connection.getresponse()
+        location = response.getheader("Location")
+        data = response.read()
+    except OSError as error:
+        raise GitHubRequestError(f"GitHub API request failed: {error}") from error
+    finally:
+        connection.close()
+
+    if response.status in {301, 302, 303, 307, 308} and location:
+        return https_get(urllib.parse.urljoin(url, location), headers, redirect_count + 1)
+    if response.status >= 400:
+        raise GitHubRequestError(
+            f"GitHub API request failed: HTTP {response.status} {response.reason}",
+            response.status,
+        )
+    return data
+
+
+def github_json(path_or_url: str) -> Any:
+    data = https_get(github_api_url(path_or_url), github_headers("application/vnd.github+json"))
+    return json.loads(data)
 
 
 def github_bytes(url: str) -> bytes:
-    request = urllib.request.Request(url, headers=github_headers("application/vnd.github+json"))
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return response.read()
+    return https_get(github_api_url(url), github_headers("application/vnd.github+json"))
 
 
 def github_headers(accept: str) -> dict[str, str]:
@@ -140,14 +197,14 @@ def triage(repo: str, workflow: str, run_id: int | None, log_file: str | None = 
             None,
         )
         if log_file:
-            with open(log_file, encoding="utf-8") as file:
+            with local_file_path(log_file).open(encoding="utf-8") as file:
                 logs = file.read()
         else:
             try:
                 logs = job_logs(repo, job_id)
-            except urllib.error.HTTPError as error:
+            except GitHubRequestError as error:
                 notes.append(
-                    f"Could not download job logs with the GitHub REST API: HTTP {error.code} {error.reason}. Set GITHUB_TOKEN/GH_TOKEN, use GitHub MCP logs, or pass --log-file."
+                    f"Could not download job logs with the GitHub REST API: {error}. Set GITHUB_TOKEN/GH_TOKEN, use GitHub MCP logs, or pass --log-file."
                 )
 
     errors, warnings, scan_ids, issue_links, issue_ids = parse_logs(logs)
@@ -218,11 +275,8 @@ def main() -> int:
 
     try:
         result = triage(args.repo, args.workflow, args.run_id, args.log_file)
-    except urllib.error.HTTPError as error:
-        print(f"GitHub API request failed: HTTP {error.code} {error.reason}", file=sys.stderr)
-        return 1
-    except urllib.error.URLError as error:
-        print(f"GitHub API request failed: {error.reason}", file=sys.stderr)
+    except GitHubRequestError as error:
+        print(str(error), file=sys.stderr)
         return 1
 
     if args.json:
