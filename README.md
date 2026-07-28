@@ -87,28 +87,5 @@ Hooks will not run until they have been reviewed and trusted in the CLI session.
 Reusable AI-agent skills live under `.agents/skills/` so repository workflows
 are not tied to a specific agent vendor. Keep agent-specific runtime
 configuration in that agent's own directory, such as Codex MCP servers, hooks,
-and launcher scripts under `.codex/`.
-
-### MCP
-
-This repository configures the WebdriverIO MCP server for both Codex and Zed.
-Codex reads the project-local server configuration from `.codex/config.toml` once
-this repository is trusted. Zed reads the same server from `.zed/settings.json`;
-reload or restart Zed if it does not pick up the setting immediately.
-
-Firefox sessions currently require running WebdriverIO MCP with Node 24. The
-Codex and Zed configs use a repository-local launcher:
-
-```text
-.codex/scripts/wdio-mcp-node24.sh
-```
-
-By default the launcher uses `fnm exec --using 24.15.0` and starts the newest
-cached `@wdio/mcp` install, falling back to `@wdio/mcp@3.9.0` through `npx`
-when no cache is available. If you use another Node manager, set
-`WDIO_MCP_NODE` and `WDIO_MCP_SERVER` before starting Codex or Zed. The
-`wdio-mcp` shim is not called directly because its `env node` shebang can
-resolve to a newer active Node version and fail Firefox/geckodriver session
-startup. On Linux, the launcher also restores common desktop session
-environment variables when they are missing, which is required for headed
-Firefox sessions.
+and launcher scripts under `.codex/`. See [`.codex/README.md`](./.codex/README.md)
+for the MCP setup and its compatibility decisions.
