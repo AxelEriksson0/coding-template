@@ -3,25 +3,25 @@
   "description": "This is a simple web starter template. Use as a base.",
   "type": "module",
   "scripts": {
-    "build": "tsgo --noEmit && vite build",
+    "build": "tsc --noEmit && vite build",
     "e2e": "playwright test",
     "start": "vite",
     "watch": "vite"
   },
   "dependencies": {
-    "@solidjs/router": "^0.16.1",
-    "solid-js": "^1.9.13"
+    "@solidjs/router": "^0.16.2",
+    "solid-js": "^1.9.14"
   },
   "devDependencies": {
-    "@inlang/cli": "^3.1.14",
-    "@inlang/paraglide-js": "^2.20.1",
-    "@playwright/test": "^1.61.0",
-    "@tailwindcss/vite": "^4.3.1",
-    "@types/node": "^26.0.0",
-    "@typescript/native-preview": "^7.0.0-dev.20260622.1",
-    "daisyui": "^5.5.23",
-    "tailwindcss": "^4.3.1",
-    "vite": "^8.0.16",
-    "vite-plugin-solid": "^2.11.12"
+    "@inlang/cli": "^3.2.0",
+    "@inlang/paraglide-js": "^2.23.0",
+    "@playwright/test": "^1.62.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.1.1",
+    "daisyui": "^5.7.4",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.1.5",
+    "vite-plugin-solid": "^2.11.13"
   }
 }

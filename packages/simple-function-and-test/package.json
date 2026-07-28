@@ -3,15 +3,15 @@
   "description": "This includes a simple function and a test. Use as a template for creating new packages.",
   "type": "module",
   "scripts": {
-    "build": "tsgo",
+    "build": "tsc",
     "dev": "node ./index.ts",
     "start": "node ./index.ts",
     "ut": "node --experimental-test-coverage --test **/*.test.ts",
-    "watch": "tsgo -w"
+    "watch": "tsc -w"
   },
   "devDependencies": {
-    "@types/node": "^26.0.0",
-    "@typescript/native-preview": "^7.0.0-dev.20260622.1",
-    "solid-js": "^1.9.13"
+    "@types/node": "^26.1.1",
+    "solid-js": "^1.9.14",
+    "typescript": "^7.0.2"
   }
 }
