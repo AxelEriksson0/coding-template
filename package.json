@@ -32,19 +32,20 @@
     "start": "yarn workspaces foreach --all -pt run start",
     "test": "yarn format && yarn lint && yarn ut",
     "update": "yarn update:node && yarn update:yarn && yarn update:dependencies",
-    "update:dependencies": "npx npm-check-updates --deep --upgrade --install always && yarn && yarn dedupe",
+    "update:dependencies": "node scripts/update-dependencies.ts && yarn && yarn dedupe",
     "update:node": "NODE_VERSION_WITH_V=$(fnm list-remote | tail -n 1) && NODE_VERSION=$(printf '%s' \"$NODE_VERSION_WITH_V\" | sed 's/^v//') && FNM_COREPACK_ENABLED=false fnm install \"$NODE_VERSION_WITH_V\" && FNM_COREPACK_ENABLED=false fnm use \"$NODE_VERSION_WITH_V\" && npm install --global corepack@latest && corepack enable && echo \"$NODE_VERSION_WITH_V\" > .node-version && npm pkg set engines.node=\">=$NODE_VERSION\"",
     "update:yarn": "yarn set version latest && corepack prepare yarn@latest --activate",
     "ut": "yarn workspaces foreach --all run ut"
   },
   "dependencies": {
-    "solid-js": "^1.9.14"
+    "solid-js": "catalog:"
   },
   "devDependencies": {
-    "lefthook": "^2.1.10",
-    "oxfmt": "^0.60.0",
-    "oxlint": "^1.75.0",
-    "oxlint-tsgolint": "^7.0.2001"
+    "@types/node": "catalog:",
+    "lefthook": "catalog:",
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "oxlint-tsgolint": "catalog:"
   },
   "engines": {
     "node": ">=26.5.0"

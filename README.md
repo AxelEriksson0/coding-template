@@ -40,9 +40,13 @@ Web infrastructure project with SolidJS and DaisyUI.
 
 `fnm` is used and configured to automatically read the `.node-version` file and set the correct `node` version. See https://github.com/Schniz/fnm for more information.
 
+### Yarn catalogs
+
+Direct dependency versions are defined in the `catalog` section of `.yarnrc.yml`. Package manifests reference those versions with the `catalog:` protocol. When adding a dependency, add its version to the catalog and use `"catalog:"` in the relevant `dependencies` or `devDependencies` section.
+
 ### npm-check-updates
 
-`npm-check-updates` helps automatically updating the dependencies in the project. Will most likely not be used in a real project because they can be very sensitive to updating dependencies, even minor ones.
+`yarn update:dependencies` uses `npm-check-updates` to update the catalog, then installs and deduplicates the resulting dependencies.
 
 ### Aikido
 

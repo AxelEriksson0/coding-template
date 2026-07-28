@@ -9,19 +9,19 @@
     "watch": "vite"
   },
   "dependencies": {
-    "@solidjs/router": "^0.16.2",
-    "solid-js": "^1.9.14"
+    "@solidjs/router": "catalog:",
+    "solid-js": "catalog:"
   },
   "devDependencies": {
-    "@inlang/cli": "^3.2.0",
-    "@inlang/paraglide-js": "^2.23.0",
-    "@playwright/test": "^1.62.0",
-    "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.1.1",
-    "daisyui": "^5.7.4",
-    "tailwindcss": "^4.3.3",
-    "typescript": "^7.0.2",
-    "vite": "^8.1.5",
-    "vite-plugin-solid": "^2.11.13"
+    "@inlang/cli": "catalog:",
+    "@inlang/paraglide-js": "catalog:",
+    "@playwright/test": "catalog:",
+    "@tailwindcss/vite": "catalog:",
+    "@types/node": "catalog:",
+    "daisyui": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-solid": "catalog:"
   }
 }

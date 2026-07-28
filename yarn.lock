@@ -1398,11 +1398,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "coding-template@workspace:."
   dependencies:
-    lefthook: "npm:^2.1.10"
-    oxfmt: "npm:^0.60.0"
-    oxlint: "npm:^1.75.0"
-    oxlint-tsgolint: "npm:^7.0.2001"
-    solid-js: "npm:^1.9.14"
+    "@types/node": "catalog:"
+    lefthook: "catalog:"
+    oxfmt: "catalog:"
+    oxlint: "catalog:"
+    oxlint-tsgolint: "catalog:"
+    solid-js: "catalog:"
   languageName: unknown
   linkType: soft
 
@@ -2605,9 +2606,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "simple-function-and-test@workspace:packages/simple-function-and-test"
   dependencies:
-    "@types/node": "npm:^26.1.1"
-    solid-js: "npm:^1.9.14"
-    typescript: "npm:^7.0.2"
+    "@types/node": "catalog:"
+    solid-js: "catalog:"
+    typescript: "catalog:"
   languageName: unknown
   linkType: soft
 
@@ -2950,9 +2951,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-solid@npm:^2.11.13":
-  version: 2.11.13
-  resolution: "vite-plugin-solid@npm:2.11.13"
+"vite-plugin-solid@npm:^2.11.14":
+  version: 2.11.14
+  resolution: "vite-plugin-solid@npm:2.11.14"
   dependencies:
     "@babel/core": "npm:^7.23.3"
     "@types/babel__core": "npm:^7.20.4"
@@ -2961,13 +2962,13 @@ __metadata:
     solid-refresh: "npm:^0.6.3"
     vitefu: "npm:^1.0.4"
   peerDependencies:
-    "@testing-library/jest-dom": ^5.16.6 || ^5.17.0 || ^6.*
+    "@testing-library/jest-dom": ^5.16.6 || ^5.17.0 || ^6.0.0 || ^7.0.0
     solid-js: ^1.7.2
     vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
   peerDependenciesMeta:
     "@testing-library/jest-dom":
       optional: true
-  checksum: 10c0/fff093ddcf1d25ff45a3ee5ce16567bfe21440ea9d5bf7667ae9ac94f47146437cd9453595f704121517812f4ff1956addad35b79691c3f7f289ab8e04e18f60
+  checksum: 10c0/9fe4c9b43b047546d6b006056e90da92edcaf36ad40d5b7ed4e861c603eeed3b9196d279cc27c462e5209b0a055df1e12ef752cffd4150c2fe220335e357a463
   languageName: node
   linkType: hard
 
@@ -3044,18 +3045,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:packages/web"
   dependencies:
-    "@inlang/cli": "npm:^3.2.0"
-    "@inlang/paraglide-js": "npm:^2.23.0"
-    "@playwright/test": "npm:^1.62.0"
-    "@solidjs/router": "npm:^0.16.2"
-    "@tailwindcss/vite": "npm:^4.3.3"
-    "@types/node": "npm:^26.1.1"
-    daisyui: "npm:^5.7.4"
-    solid-js: "npm:^1.9.14"
-    tailwindcss: "npm:^4.3.3"
-    typescript: "npm:^7.0.2"
-    vite: "npm:^8.1.5"
-    vite-plugin-solid: "npm:^2.11.13"
+    "@inlang/cli": "catalog:"
+    "@inlang/paraglide-js": "catalog:"
+    "@playwright/test": "catalog:"
+    "@solidjs/router": "catalog:"
+    "@tailwindcss/vite": "catalog:"
+    "@types/node": "catalog:"
+    daisyui: "catalog:"
+    solid-js: "catalog:"
+    tailwindcss: "catalog:"
+    typescript: "catalog:"
+    vite: "catalog:"
+    vite-plugin-solid: "catalog:"
   languageName: unknown
   linkType: soft
 
