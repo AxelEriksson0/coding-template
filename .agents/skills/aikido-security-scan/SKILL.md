@@ -54,7 +54,7 @@ If MCP returns multiple plausible issues or cannot expose the dashboard issue, a
 
 Prefer fixing the underlying issue over weakening CI.
 
-- For open-source dependency issues, update the direct dependency or Yarn resolution that removes the vulnerable transitive version. Avoid broad dependency churn.
+- For open-source dependency issues, update the direct dependency or pnpm override that removes the vulnerable transitive version. Avoid broad dependency churn.
 - For SAST issues, patch the vulnerable code path and add focused tests when behavior can regress.
 - For IaC issues, fix the specific insecure setting and preserve deployment intent.
 - For leaked secrets, remove the secret, rotate it outside the repo, and add or update secret-safe examples.
@@ -69,9 +69,9 @@ After making a fix:
 1. Run the relevant repository checks. For this repo, prefer:
 
 ```bash
-yarn build
-yarn lint
-yarn ut
+pnpm build
+pnpm lint
+pnpm ut
 ```
 
 2. Run `aikido_full_scan` through MCP on the changed or staged files.

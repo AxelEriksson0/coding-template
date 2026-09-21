@@ -2,24 +2,24 @@
 
 ## Project Structure & Module Organization
 
-This is a Yarn workspace monorepo. The root contains shared tooling and repository configuration, including `package.json`, `tsconfig.json`, `.oxlintrc.json`, `.github/workflows/`, and `lefthook.yml`.
+This is a pnpm workspace monorepo. The root contains shared tooling and repository configuration, including `package.json`, `pnpm-workspace.yaml`, `tsconfig.json`, `.oxlintrc.json`, `.github/workflows/`, and `lefthook.yml`.
 
 - `packages/simple-function-and-test/`: small TypeScript package with source in `index.ts` and `utils/`, plus unit tests in `tests/`.
 - `packages/web/`: SolidJS/Vite web app. Source lives in `src/`, browser tests in `tests/`, locale messages in `messages/`, and static assets in `src/assets/`.
-- `packages/*-infrastructure/`: infrastructure documentation and deployment scripts; these are not currently Yarn workspaces.
+- `packages/*-infrastructure/`: infrastructure documentation and deployment scripts; these are not currently pnpm workspaces.
 - `docs/`: supporting notes about project decisions and TypeScript configuration.
 
 ## Build, Test, and Development Commands
 
 Run commands from the repository root unless noted.
 
-- `yarn build`: builds all workspaces that define a build script.
-- `yarn lint`: runs Oxlint with type-aware checks.
-- `yarn format`: formats the repository with Oxfmt.
-- `yarn ut`: runs workspace unit test scripts.
-- `yarn test`: runs format, lint, and unit tests.
-- `yarn workspace web start`: starts the Vite dev server.
-- `yarn workspace web e2e`: runs Playwright tests for the web app.
+- `pnpm build`: builds all workspaces that define a build script.
+- `pnpm lint`: runs Oxlint with type-aware checks.
+- `pnpm format`: formats the repository with Oxfmt.
+- `pnpm ut`: runs workspace unit test scripts.
+- `pnpm test`: runs format, lint, and unit tests.
+- `pnpm --filter web start`: starts the Vite dev server.
+- `pnpm --filter web e2e`: runs Playwright tests for the web app.
 
 ## Coding Style & Naming Conventions
 
@@ -31,7 +31,7 @@ Use PascalCase for Solid components, for example `LanguageToggle.tsx`, and camel
 
 The simple TypeScript package uses Node’s built-in test runner with `node:test` and `node:assert/strict`. Name unit tests `*.test.ts`. The web package uses Playwright with specs named `*.spec.ts`.
 
-Codex runs `yarn lint`, `yarn build`, and `yarn ut` automatically through project-local `PostToolUse` hooks after edit tools are used. Run `yarn workspace web e2e` when changing browser behavior, routing, localization, or visible UI.
+Codex runs `pnpm lint`, `pnpm build`, and `pnpm ut` automatically through project-local `PostToolUse` hooks after edit tools are used. Run `pnpm --filter web e2e` when changing browser behavior, routing, localization, or visible UI.
 
 ## Commit & Pull Request Guidelines
 

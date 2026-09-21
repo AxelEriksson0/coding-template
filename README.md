@@ -6,8 +6,8 @@ This repository started out as a simple opinionated tsconfig.json template. Howe
 
 - `npm install -g corepack`
 - `corepack enable`
-- `yarn install`
-- `yarn test`
+- `pnpm install`
+- `pnpm test`
 
 ## Packages
 
@@ -26,7 +26,7 @@ Web infrastructure project with SolidJS and DaisyUI.
 ## Structure
 
 - Using experimental TypeScript 7 version.
-- Using Yarn as it simplifies adding arguments when running scripts.
+- Using pnpm for fast, disk-efficient installs and workspace support.
 - Using Zed instead of VS Code to keep the editor setup fast and avoid the performance cost and bloat.
 - ESM-only.
 
@@ -40,13 +40,13 @@ Web infrastructure project with SolidJS and DaisyUI.
 
 `fnm` is used and configured to automatically read the `.node-version` file and set the correct `node` version. See https://github.com/Schniz/fnm for more information.
 
-### Yarn catalogs
+### pnpm catalogs
 
-Direct dependency versions are defined in the `catalog` section of `.yarnrc.yml`. Package manifests reference those versions with the `catalog:` protocol. When adding a dependency, add its version to the catalog and use `"catalog:"` in the relevant `dependencies` or `devDependencies` section.
+Direct dependency versions are defined in the `catalog` section of `pnpm-workspace.yaml`. Package manifests reference those versions with the `catalog:` protocol. When adding a dependency, add its version to the catalog and use `"catalog:"` in the relevant `dependencies` or `devDependencies` section.
 
-### npm-check-updates
+### Dependency updates
 
-`yarn update:dependencies` uses `npm-check-updates` to update the catalog, then installs and deduplicates the resulting dependencies.
+`pnpm update:dependencies` updates dependencies across the workspace to their latest versions, then deduplicates the resulting lockfile.
 
 ### Aikido
 

@@ -2,9 +2,8 @@
   "format_on_save": "on",
   "context_servers": {
     "wdio-mcp": {
-      "source": "custom",
-      "command": "bash",
-      "args": ["/home/rxtl/coding-template/.codex/scripts/wdio-mcp-node24.sh"]
+      "args": ["/home/rxtl/coding-template/.codex/scripts/wdio-mcp-node24.sh"],
+      "command": "bash"
     }
   }
 }

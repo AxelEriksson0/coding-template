@@ -1,0 +1,24 @@
+packages:
+  - packages/simple-function-and-test
+  - packages/web
+
+allowBuilds:
+  lefthook: true
+
+catalog:
+  "@inlang/cli": ^3.3.7
+  "@inlang/paraglide-js": ^2.25.4
+  "@playwright/test": ^1.63.0
+  "@solidjs/router": ^1.0.0
+  "@tailwindcss/vite": ^4.3.3
+  "@types/node": ^26.6.2
+  daisyui: ^5.7.42
+  lefthook: ^2.1.14
+  oxfmt: ^0.68.0
+  oxlint: ^1.83.0
+  oxlint-tsgolint: ^7.0.2002
+  solid-js: ^1.9.15
+  tailwindcss: ^4.3.3
+  typescript: ^7.0.2
+  vite: ^8.3.0
+  vite-plugin-solid: ^2.11.14

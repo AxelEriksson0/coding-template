@@ -12,7 +12,7 @@
       "Bash(git diff*)",
       "Bash(git log*)",
       "Bash(npm *)",
-      "Bash(yarn *)",
+      "Bash(pnpm *)",
       "Bash(ls *)"
     ]
   }

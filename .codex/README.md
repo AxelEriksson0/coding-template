@@ -38,4 +38,4 @@ supported Playwright host when this setup was selected. WebdriverIO MCP was
 therefore chosen for agent-driven browser automation.
 
 This decision only concerns the MCP server. The web workspace still uses
-Playwright Test for its E2E suite through `yarn workspace web e2e`.
+Playwright Test for its E2E suite through `pnpm --filter web e2e`.

@@ -6,19 +6,19 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash -lc 'yarn lint'",
+            "command": "bash -lc 'pnpm lint'",
             "timeout": 120,
             "statusMessage": "Running lint"
           },
           {
             "type": "command",
-            "command": "bash -lc 'yarn build'",
+            "command": "bash -lc 'pnpm build'",
             "timeout": 300,
             "statusMessage": "Running build"
           },
           {
             "type": "command",
-            "command": "bash -lc 'yarn ut'",
+            "command": "bash -lc 'pnpm ut'",
             "timeout": 300,
             "statusMessage": "Running unit tests"
           }

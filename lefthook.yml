@@ -2,8 +2,8 @@ pre-commit:
   parallel: true
   commands:
     format:
-      run: yarn format
+      run: pnpm format
     lint:
-      run: yarn lint
+      run: pnpm lint
     build:
-      run: yarn build
+      run: pnpm build

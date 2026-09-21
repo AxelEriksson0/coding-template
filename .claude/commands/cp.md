@@ -4,4 +4,4 @@ Follow the Git Safety Protocol from your system instructions when committing (e.
 
 ## Handling auto-fixes from pre-commit hooks
 
-After the commit completes, run `git status` to check for any unstaged changes left behind by the pre-commit hooks (e.g. files reformatted by `yarn format`). If there are any, stage and commit them immediately with the message `chore: apply auto-fixes from pre-commit hooks` before pushing.
+After the commit completes, run `git status` to check for any unstaged changes left behind by the pre-commit hooks (e.g. files reformatted by `pnpm format`). If there are any, stage and commit them immediately with the message `chore: apply auto-fixes from pre-commit hooks` before pushing.

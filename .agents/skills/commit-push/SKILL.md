@@ -21,9 +21,9 @@ Use this skill only after an explicit user request such as `/cp`, "commit and pu
 2. Review changes with `git diff`; inspect untracked files before staging.
 3. Decide whether the changes should be one commit or several commits. Use several commits when there are clearly independent groups, such as code changes, docs/notes, config, or skill updates.
 4. Run the repo's required verification before committing unless the user explicitly told you to skip it. For this repo, use:
-   - `yarn build`
-   - `yarn format`
-   - `yarn lint`
+   - `pnpm build`
+   - `pnpm format`
+   - `pnpm lint`
 5. For each commit group, stage the relevant files and commit with a concise imperative message.
 6. Push the current branch after all commits are created.
 7. Report the commit hash(es), branch, push result, and any checks that were skipped or failed.

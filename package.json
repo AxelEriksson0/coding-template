@@ -4,9 +4,9 @@
   "description": "My opinionated coding template",
   "keywords": [
     "oxlint",
+    "pnpm",
     "template",
-    "typescript",
-    "yarn"
+    "typescript"
   ],
   "homepage": "https://github.com/AxelEriksson0/coding-template#readme",
   "bugs": {
@@ -18,24 +18,20 @@
     "type": "git",
     "url": "git+https://github.com/AxelEriksson0/coding-template.git"
   },
-  "workspaces": [
-    "packages/simple-function-and-test",
-    "packages/web"
-  ],
   "type": "module",
   "scripts": {
-    "build": "yarn workspaces foreach --all -pt run build",
-    "dev": "yarn workspaces foreach --all -pt run dev",
+    "build": "pnpm --recursive run build",
+    "dev": "pnpm --recursive --parallel run dev",
     "format": "oxfmt .",
     "lint": "oxlint --type-aware",
     "prepare": "lefthook install",
-    "start": "yarn workspaces foreach --all -pt run start",
-    "test": "yarn format && yarn lint && yarn ut",
-    "update": "yarn update:node && yarn update:yarn && yarn update:dependencies",
-    "update:dependencies": "node scripts/update-dependencies.ts && yarn && yarn dedupe",
-    "update:node": "NODE_VERSION_WITH_V=$(fnm list-remote | tail -n 1) && NODE_VERSION=$(printf '%s' \"$NODE_VERSION_WITH_V\" | sed 's/^v//') && FNM_COREPACK_ENABLED=false fnm install \"$NODE_VERSION_WITH_V\" && FNM_COREPACK_ENABLED=false fnm use \"$NODE_VERSION_WITH_V\" && npm install --global corepack@latest && corepack enable && echo \"$NODE_VERSION_WITH_V\" > .node-version && npm pkg set engines.node=\">=$NODE_VERSION\"",
-    "update:yarn": "yarn set version latest && corepack prepare yarn@latest --activate",
-    "ut": "yarn workspaces foreach --all run ut"
+    "start": "pnpm --recursive --parallel run start",
+    "test": "pnpm format && pnpm lint && pnpm ut",
+    "update": "pnpm update:node && pnpm update:pnpm && pnpm update:dependencies",
+    "update:dependencies": "pnpm update --recursive --include-workspace-root --latest && pnpm dedupe",
+    "update:node": "NODE_VERSION_WITH_V=$(fnm list-remote --latest) && NODE_VERSION=$(printf '%s' \"$NODE_VERSION_WITH_V\" | sed 's/^v//') && FNM_COREPACK_ENABLED=false fnm install \"$NODE_VERSION_WITH_V\" && FNM_COREPACK_ENABLED=false fnm use \"$NODE_VERSION_WITH_V\" && npm install --global corepack@latest && corepack enable && echo \"$NODE_VERSION_WITH_V\" > .node-version && npm pkg set engines.node=\">=$NODE_VERSION\"",
+    "update:pnpm": "corepack use pnpm@latest",
+    "ut": "pnpm --recursive run ut"
   },
   "dependencies": {
     "solid-js": "catalog:"
@@ -48,7 +44,7 @@
     "oxlint-tsgolint": "catalog:"
   },
   "engines": {
-    "node": ">=26.5.0"
+    "node": ">=26.9.0"
   },
-  "packageManager": "yarn@4.17.1"
+  "packageManager": "pnpm@12.5.1"
 }
