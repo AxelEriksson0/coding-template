@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "@wdio/mcp": "catalog:",
     "lefthook": "catalog:",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",

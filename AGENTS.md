@@ -21,6 +21,10 @@ Run commands from the repository root unless noted.
 - `pnpm --filter web start`: starts the Vite dev server.
 - `pnpm --filter web e2e`: runs Playwright tests for the web app.
 
+## Dependency Management
+
+Declare dependency versions in the `catalog` section of `pnpm-workspace.yaml`, including dependencies used only by the root package. Reference cataloged dependencies from `package.json` files with `"catalog:"` instead of repeating version numbers in individual manifests. Keep `pnpm-lock.yaml` updated whenever catalog entries or dependency references change.
+
 ## Coding Style & Naming Conventions
 
 Use TypeScript and ESM imports. Keep package code strict and explicit; avoid unused locals, unused parameters, implicit returns, and console logging outside intentional CLI/demo entry points. Formatting is handled by Oxfmt, and linting is handled by Oxlint.

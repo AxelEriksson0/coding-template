@@ -3,6 +3,9 @@ packages:
   - packages/web
 
 allowBuilds:
+  edgedriver: true
+  esbuild: true
+  geckodriver: true
   lefthook: true
 
 catalog:
@@ -12,6 +15,7 @@ catalog:
   "@solidjs/router": ^1.0.0
   "@tailwindcss/vite": ^4.3.3
   "@types/node": ^26.6.2
+  "@wdio/mcp": 3.13.0
   daisyui: ^5.7.42
   lefthook: ^2.1.14
   oxfmt: ^0.68.0

@@ -20,10 +20,12 @@ version declared in `../package.json`.
 Do not update or remove the MCP pin until a headed Firefox session has been
 verified with the replacement version.
 
-The launcher uses `fnm exec --using 24.15.0` and starts the newest cached
-`@wdio/mcp` install, falling back to `@wdio/mcp@3.9.0` through `npx` when no
-cache is available. If another Node manager is used, set both
-`WDIO_MCP_NODE` and `WDIO_MCP_SERVER` before starting Codex or Zed.
+The `@wdio/mcp` version is declared in the catalog in `../pnpm-workspace.yaml`,
+referenced from the root `package.json`, and locked by `pnpm-lock.yaml`. The
+launcher uses `fnm exec --using 24.15.0` to start that repository-local
+installation. Run `pnpm install` before starting Codex or Zed. If another Node
+manager is used, set `WDIO_MCP_NODE`; `WDIO_MCP_SERVER` can optionally override
+the repository-local server entry point.
 
 The `wdio-mcp` shim is not called directly because its `env node` shebang can
 resolve to a newer active Node version and break Firefox/geckodriver sessions.
