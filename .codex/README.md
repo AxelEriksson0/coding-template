@@ -34,10 +34,5 @@ variables required by headed Firefox.
 
 ### Why not Playwright MCP?
 
-The MCP choice was made for the Fedora development environment used by this
-project. Playwright MCP did not work there, and Fedora was not an officially
-supported Playwright host when this setup was selected. WebdriverIO MCP was
-therefore chosen for agent-driven browser automation.
-
-This decision only concerns the MCP server. The web workspace still uses
-Playwright Test for its E2E suite through `pnpm --filter web e2e`.
+The rationale and reconsideration criteria are recorded in
+[`docs/TECHNOLOGY_DECISIONS.md`](../docs/TECHNOLOGY_DECISIONS.md#playwright-mcp).

@@ -30,6 +30,9 @@ Web infrastructure project with SolidJS and DaisyUI.
 - Using Zed instead of VS Code to keep the editor setup fast and avoid the performance cost and bloat.
 - ESM-only.
 
+See [technology decisions](./docs/TECHNOLOGY_DECISIONS.md) for rejected
+alternatives and the criteria for reconsidering them.
+
 ### Oxlint
 
 - Using Oxlint as the performance is immense compared to ESLint and the IDE plugin doesn't crash.
